@@ -9,6 +9,12 @@ class CurriculumMaker
 		@template = 'template missing'
 	end
 
+	def add_course_data(filepath)
+		courses = CSV.read(filepath)
+		header = courses.shift
+		@course_data << {:header => header, :couses => courses}
+	end
+
 	def render
 		ERB.new(@template).result(binding)
 	end
