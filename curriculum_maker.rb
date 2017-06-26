@@ -2,7 +2,7 @@ require 'erb'
 require 'csv'
 
 class CurriculumMaker
-	
+
 	include ERB::Util
 	attr_reader :course_date, :template
 
@@ -11,10 +11,15 @@ class CurriculumMaker
 		@template = 'template missing'
 	end
 
+	def add_template(filepath)
+		# templates must be strings for erb
+		@template = File.read(filepath)
+	end
+
 	def add_course_data(filepath)
 		courses = CSV.read(filepath)
 		header = courses.shift
-		@course_data << {:header => header, :couses => courses}
+		@course_data << {:header => header, :courses => courses}
 	end
 
 	def render
