@@ -2,6 +2,8 @@ require 'erb'
 require 'csv'
 
 class CurriculumMaker
+	
+	include ERB::Util
 	attr_reader :course_date, :template
 
 	def initialize

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>First Rails Example for getting parsed csv data</title>
+</head>
+<body>
+<% @course_data.each do |data| %>
+<table><caption> <%= data[:header][0]%> course</caption>   
+<colgroup>
+	<col id="semister">
+	<col id="credits">
+</colgroup> 
+<tr>
+<th scope="col"><%= h(data[:header][0]) %> </th>
+<th scope="col"><%= h(data[:header][1]) %> </th>
+
+</tr>
+<% data[:courses].each do |course| %>
+<%  code, title = course[0].split('', 2) %>
+<tr>
+<td><strong><%= h(code) %></strong>> <%= h(title) %> </td>
+<td> <%= h(course[1]) %> </td>
+</tr>
+<% end %>
+</table>
+<% end %>
+</body>
+</html>
